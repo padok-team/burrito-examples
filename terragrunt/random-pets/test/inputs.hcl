@@ -1,4 +1,3 @@
 inputs = {
-  debug   = true
-  comment = "it works!"
+  pets = ["first", "second", "third"]
 }

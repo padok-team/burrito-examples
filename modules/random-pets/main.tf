@@ -1,11 +1,4 @@
-resource "random_pet" "first" {
-  length = 1
-}
-
-resource "random_pet" "second" {
-  length = 1
-}
-
-resource "random_pet" "third" {
+resource "random_pet" "this" {
+  for_each = toset(var.pets)
   length = 1
 }
