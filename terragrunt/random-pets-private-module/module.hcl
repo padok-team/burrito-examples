@@ -1,3 +1,3 @@
 terraform {
-  source = "https://github.com/padok-team/burrito-private-terraform-module.git?ref=main"
+  source = "github.com/padok-team/burrito-private-terraform-module//?ref=main"
 }
