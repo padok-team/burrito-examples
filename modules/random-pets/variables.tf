@@ -1,3 +1,8 @@
 variable "pets" {
-    type = list(string)
+  type = list(string)
+}
+
+variable "length" {
+  type    = number
+  default = 1
 }
