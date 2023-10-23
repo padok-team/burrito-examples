@@ -1,3 +1,3 @@
 inputs = {
-  pets = ["first", "second", "third"]
+  pets = ["first", "second", "third", "fourth"]
 }
