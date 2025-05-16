@@ -3,7 +3,6 @@ module "this" {
     pets = [
         "first",
         "second",
-        "third",
-        "fourth"
+        "third"
     ]
 }
