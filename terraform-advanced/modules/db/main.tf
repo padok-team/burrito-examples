@@ -1,6 +1,9 @@
 resource "random_id" "db" {
-  byte_length = 2
+  byte_length = 4
   prefix      = var.app_name
+  keepers = {
+    app = var.app_name
+  }
 }
 
 resource "null_resource" "db_migrate" {

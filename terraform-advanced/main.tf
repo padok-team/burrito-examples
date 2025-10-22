@@ -2,21 +2,18 @@ locals {
   envs = ["dev", "stg", "prod", "qa"]
 }
 
+
 resource "time_static" "now" {}
 
 resource "random_pet" "root" {
-  length  = 2
+  length  = 3
   keepers = { ts = time_static.now.id }
 }
 
+# Write a greeting file using the generated pet id
 resource "local_file" "greeting" {
   filename = "${path.module}/greeting.txt"
   content  = "hello ${random_pet.root.id}"
-}
-
-resource "local_file" "greeting2" {
-  filename = "${path.module}/greeting.txt"
-  content  = "hello !!!"
 }
 
 data "local_file" "greeting" {
@@ -27,6 +24,12 @@ resource "null_resource" "notify" {
   triggers = {
     content_sha = data.local_file.greeting.content_sha256
   }
+}
+
+# A small random token used by other resources in examples
+resource "random_string" "token" {
+  length  = 8
+  special = false
 }
 
 module "app" {
@@ -42,7 +45,7 @@ module "db" {
 // A for_each collection to generate multiple instances
 resource "random_pet" "items" {
   for_each = toset(local.envs)
-  length   = 1
+  length   = 2
 }
 
 resource "null_resource" "per_env" {
